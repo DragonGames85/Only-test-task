@@ -1,0 +1,61 @@
+.block {
+    position: relative;
+    background: var(--bg);
+    color: var(--text);
+    padding: 48px 16px 24px;
+    overflow: hidden;
+    isolation: isolate;
+    height: 100vh;
+}
+
+.bgLineV,
+.bgLineH {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.bgLineV::before,
+.bgLineH::before {
+    content: '';
+    position: absolute;
+    background: var(--text);
+    opacity: 0.2;
+}
+
+.bgLineV::before {
+    width: 1px;
+    height: 100%;
+    left: 50%;
+    top: 0;
+}
+
+.bgLineH::before {
+    height: 1px;
+    width: 100%;
+    left: 0;
+    top: calc(50% + 4px);
+}
+
+.stage {
+    position: relative;
+    min-height: 380px;
+}
+
+@media (max-width: 640px) {
+    .stage {
+        min-height: 240px;
+    }
+    .bgLineH,
+    .bgLineV,
+    .bgLineH::before,
+    .bgLineV::before {
+        display: none;
+    }
+
+    .bgLineB {
+        display: block;
+        opacity: 0.2;
+        border-bottom: 1px solid var(--text);
+    }
+}

@@ -1,0 +1,103 @@
+.circleWrap {
+    --size: min(62vw, 520px);
+    --radius: calc(var(--size) * 0.5);
+    position: relative;
+    width: var(--size);
+    height: var(--size);
+    margin: 0 auto;
+}
+
+.circle {
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgba(31, 42, 68, 0.12);
+    border-radius: 50%;
+    position: relative;
+}
+
+.dot {
+    --angle: -90deg;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: 1px solid black;
+    background: var(--text);
+    transform: translate(-50%, -50%);
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    transition: transform 0.5s ease, width 0.5s ease, height 0.5s ease, box-shadow 0.5s ease;
+}
+
+.dot:focus-visible {
+    outline: 2px solid black;
+    outline-offset: 2px;
+}
+
+.dot:hover {
+    width: 30px;
+    height: 30px;
+    background: var(--bg);
+}
+
+.dotActive {
+    background: var(--bg);
+}
+
+.dotWrap {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: rotate(var(--angle)) translate(var(--radius)) rotate(calc(-1 * var(--angle)))
+        rotate(calc(-1 * var(--global-rot, 0deg)));
+    transition: transform 0.35s ease;
+}
+
+.dotNumber {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0.2);
+    font-size: 10px;
+    color: var(--text);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.18s ease, opacity 0.18s ease;
+}
+
+.dotWrap:hover .dotNumber {
+    transform: translate(-50%, -50%) scale(3);
+    opacity: 1;
+}
+
+.dotWrap:hover .dot {
+    transform: translate(-50%, -50%) scale(1.6);
+    width: 30px;
+    height: 30px;
+}
+
+.dotWrapActive .dotNumber {
+    transform: translate(-50%, -50%) scale(3);
+    opacity: 1;
+}
+
+.dotWrapActive .dot {
+    transform: translate(-50%, -50%) scale(1.6);
+    width: 30px;
+    height: 30px;
+}
+
+@media (max-width: 640px) {
+    .circleWrap {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .dotWrap {
+        transition: none;
+    }
+}

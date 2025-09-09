@@ -1,0 +1,62 @@
+:root {
+    --year-left: #5d5fef;
+    --year-right: #ef5da8;
+}
+
+.yearLeft,
+.yearRight {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-weight: 800;
+    line-height: 0.8;
+    mix-blend-mode: multiply;
+    user-select: none;
+    pointer-events: none;
+}
+
+.yearLeft {
+    left: clamp(6px, 6vw, 120px);
+    color: var(--year-left);
+}
+
+.yearRight {
+    right: clamp(6px, 6vw, 120px);
+    color: var(--year-right);
+}
+
+.yearLeft span,
+.yearRight span {
+    font-size: clamp(60px, 18vw, 180px);
+}
+
+@media (max-width: 1200px) {
+    .yearLeft span,
+    .yearRight span {
+        font-size: clamp(48px, 22vw, 120px);
+    }
+}
+
+@media (max-width: 992px) {
+    .yearLeft span,
+    .yearRight span {
+        font-size: clamp(48px, 22vw, 100px);
+        font-weight: 500;
+    }
+}
+
+@media (max-width: 768px) {
+    .yearLeft span,
+    .yearRight span {
+        font-size: clamp(24px, 22vw, 70px);
+        font-weight: 500;
+    }
+}
+
+@media (max-width: 500px) {
+    .yearLeft span,
+    .yearRight span {
+        font-size: clamp(24px, 22vw, 55px);
+        font-weight: 500;
+    }
+}
