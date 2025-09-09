@@ -27,36 +27,28 @@
 
 .yearLeft span,
 .yearRight span {
-    font-size: clamp(60px, 18vw, 180px);
+    font-size: 180px;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1400px) {
     .yearLeft span,
     .yearRight span {
-        font-size: clamp(48px, 22vw, 120px);
+        font-size: 130px;
     }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 900px) {
     .yearLeft span,
     .yearRight span {
-        font-size: clamp(48px, 22vw, 100px);
-        font-weight: 500;
+        font-size: 120px;
+        font-weight: 600;
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 640px) {
     .yearLeft span,
     .yearRight span {
-        font-size: clamp(24px, 22vw, 70px);
-        font-weight: 500;
-    }
-}
-
-@media (max-width: 500px) {
-    .yearLeft span,
-    .yearRight span {
-        font-size: clamp(24px, 22vw, 55px);
-        font-weight: 500;
+        font-size: 70px;
+        font-weight: 600;
     }
 }

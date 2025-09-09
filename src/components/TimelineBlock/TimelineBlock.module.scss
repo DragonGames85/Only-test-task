@@ -2,10 +2,13 @@
     position: relative;
     background: var(--bg);
     color: var(--text);
-    padding: 48px 16px 24px;
     overflow: hidden;
     isolation: isolate;
     height: 100vh;
+    margin-left: clamp(0px, 8vw, 300px);
+    margin-right: clamp(0px, 5vw, 200px);
+    padding-block: 100px;
+    border-inline: 1px solid var(--bgLines);
 }
 
 .bgLineV,
@@ -19,8 +22,7 @@
 .bgLineH::before {
     content: '';
     position: absolute;
-    background: var(--text);
-    opacity: 0.2;
+    background: var(--bgLines);
 }
 
 .bgLineV::before {
@@ -42,6 +44,12 @@
     min-height: 380px;
 }
 
+@media (max-width: 1200px) {
+    .block {
+        margin: 0;
+    }
+}
+
 @media (max-width: 640px) {
     .stage {
         min-height: 240px;
@@ -52,10 +60,8 @@
     .bgLineV::before {
         display: none;
     }
-
     .bgLineB {
         display: block;
-        opacity: 0.2;
-        border-bottom: 1px solid var(--text);
+        border-bottom: 1px solid var(--bgLines);
     }
 }

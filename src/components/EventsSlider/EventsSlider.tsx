@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Event } from '../../types/app';
 import { EventCard } from '../EventCard/EventCard';
 import styles from './EventsSlider.module.scss';
-
+import { motion, AnimatePresence } from 'framer-motion';
 interface EventsSliderProps {
     events: Event[];
     onSwiperInit: (swiper: SwiperInstance) => void;
@@ -27,11 +27,21 @@ export const EventsSlider: React.FC<EventsSliderProps> = ({ events, onSwiperInit
                 }}
                 className={styles.swiper}
             >
-                {events.map(event => (
-                    <SwiperSlide key={event.id} className={styles.slide}>
-                        <EventCard event={event} />
-                    </SwiperSlide>
-                ))}
+                <AnimatePresence mode="sync">
+                    {events.map(event => (
+                        <SwiperSlide key={event.id} className={styles.slide}>
+                            <motion.div
+                                key={event.id}
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: -20 }}
+                                transition={{ duration: 0.3 }}
+                            >
+                                <EventCard event={event} />
+                            </motion.div>
+                        </SwiperSlide>
+                    ))}
+                </AnimatePresence>
             </Swiper>
         </div>
     );
